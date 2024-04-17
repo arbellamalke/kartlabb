@@ -1,0 +1,12 @@
+.mapContainer {
+  height: 500px;
+  width: auto;
+}
+
+.popUpleaf {
+  color: #d7e4e4;
+}
+
+.leaflet-popup-content-wrapper {
+  width: auto;
+}
