@@ -1,7 +1,6 @@
 import { Autocomplete, Box, TextField } from "@mui/material";
 import cities from "../../cities.json";
-import { SyntheticEvent } from "react";
-import React from "react";
+import { useState } from "react";
 
 interface ICity {
   latitude: number;
@@ -11,14 +10,17 @@ interface ICity {
   municipality: string;
 }
 
-export default function CountrySelect() {
-  const [selectedLocal, setSelectedLocal] = React.useState<ICity | null>(null);
-  const [inputLocal, setInputLocal] = React.useState<string>("");
+interface ICountrySelectProps {
+  handleSelect: () => void;
+}
+export default function DropDown(props: ICountrySelectProps) {
+  // const [selectedLocal, setSelectedLocal] = useState<ICity | null>(null);
+  const [inputLocal, setInputLocal] = useState<string>("");
   console.log("inputLocal", inputLocal);
-  console.log("selectedLocal", selectedLocal);
+  //   console.log("selectedLocal", selectedLocal);
 
   return (
-    <div className="CountrySelect">
+    <div className="DropDown">
       <Autocomplete
         id="country-select-demo"
         sx={{ width: 200 }}
@@ -28,7 +30,7 @@ export default function CountrySelect() {
           setInputLocal(newInputValue);
         }}
         onChange={(event: any, newValue: ICity | null) => {
-          setSelectedLocal(newValue);
+          //   setSelectedLocal(newValue);
         }}
         autoHighlight
         getOptionLabel={(option) => option.locality}
@@ -52,7 +54,6 @@ export default function CountrySelect() {
           />
         )}
       />
-      {/* </select> */}
     </div>
   );
 }

@@ -10,12 +10,22 @@ import Button from "@mui/material/Button";
 import Header from "./components/header/header/headermain";
 import cities from "./cities.json";
 import MapWrapper from "./components/mapwrapper/MapWrapper";
-import ComboBox from "./components/AutoComplete.tsx/DropDown";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import { BarChart } from "@mui/x-charts";
+import DropDown from "./components/Dropdown/DropDown";
+
+interface ICity {
+  latitude: number;
+  longitude: number;
+  locality: string;
+  county: string;
+  municipality: string;
+}
 
 function App() {
   const [count, setCount] = useState(0);
+
+  const [selectedLocal, setSelectedLocal] = useState<ICity | null>(null);
 
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === "dark" ? "#000000" : "#FFFFFF",
@@ -76,7 +86,7 @@ function App() {
         <Grid item xs={6} sm={8} md={4}>
           <Item>
             <Stack spacing={2}>
-              <ComboBox></ComboBox>
+              <DropDown handleSelect={setSelectedLocal}></DropDown>
               <Button variant="outlined">Sök</Button>
               <Button variant="outlined">Lägg till</Button>
               <LightModeIcon />
